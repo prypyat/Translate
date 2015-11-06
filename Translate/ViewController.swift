@@ -9,20 +9,27 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate {
+class ViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translatedText: UITextView!
+    @IBOutlet weak var sourceLanguage: UIPickerView!
+    
     let PLACEHOLDER = "<Text to Translate>"
     
-    //var data = NSMutableData()
+    var sourceL = "English"
+    var targetL = "English"
+    
+    var languages = [["English","French","Turkish","Hindi"],["English","French","Turkish","Hindi"]]
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         placeholder(textToTranslate!, placeholder: PLACEHOLDER)
-
+        
+        self.sourceLanguage.dataSource = self;
+        self.sourceLanguage.delegate = self;
     }
     
     override func didReceiveMemoryWarning()
@@ -31,13 +38,37 @@ class ViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return languages.count
+    }
+
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return languages[component].count
+    }
+    
+    func pickerView(pickerView:UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return languages[component][row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        updateLanguage()
+    }
+    
+    func updateLanguage()
+    {
+        sourceL = languages[0][sourceLanguage.selectedRowInComponent(0)]
+        targetL = languages[1][sourceLanguage.selectedRowInComponent(1)]
+        print(sourceL)
+        print(targetL)
+    }
+    
     @IBAction func translate(sender: AnyObject)
     {
         
         let str = textToTranslate.text
         let escapedStr = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         
-        let langStr = ("en|fr").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let langStr = (sourceL+"|"+targetL).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         
         let urlStr:String = ("http://api.mymemory.translated.net/get?q="+escapedStr!+"&langpair="+langStr!)
         
@@ -62,7 +93,11 @@ class ViewController: UIViewController, UITextViewDelegate {
             
             if let httpResponse = response as? NSHTTPURLResponse
             {
-                if(httpResponse.statusCode == 200)
+                if (self.sourceL == self.targetL)
+                {
+                    result = "Can't translate same language"
+                }
+                else if(httpResponse.statusCode == 200)
                 {
                     
                     let jsonDict: NSDictionary!=(try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
@@ -73,6 +108,7 @@ class ViewController: UIViewController, UITextViewDelegate {
                         
                         result = responseData.objectForKey("translatedText") as! String
                     }
+
                 }
                 
                 self.translatedText.text = result
@@ -141,6 +177,6 @@ class ViewController: UIViewController, UITextViewDelegate {
             return false
         }
     }
-    
+
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -46,25 +46,47 @@
                                     <action selector="translate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dAk-vY-Ypz"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lmH-AQ-J6O">
-                                <rect key="frame" x="20" y="364" width="198" height="126"/>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ag-13-cGW">
-                                <rect key="frame" x="249" y="451" width="103" height="31"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Swap To/From"/>
-                            </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KzV-qp-Twh">
-                                <rect key="frame" x="370" y="349" width="210" height="155"/>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klO-Pf-Mw7">
-                                <rect key="frame" x="405" y="335" width="141" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klO-Pf-Mw7">
+                                <rect key="frame" x="439" y="326" width="141" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="aDK-y6-gYb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-sQ-eb4">
-                                <rect key="frame" x="47" y="335" width="145" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ag-13-cGW">
+                                <rect key="frame" x="251" y="451" width="99" height="31"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="YBV-MI-lhC"/>
+                                </constraints>
+                                <state key="normal" title="Swap To/From"/>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCs-AH-EXZ">
+                                <rect key="frame" x="20" y="364" width="560" height="158"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="158" id="Czh-kU-s4e"/>
+                                    <constraint firstAttribute="height" constant="158" id="Oo4-V9-sEe"/>
+                                    <constraint firstAttribute="width" constant="560" id="VhT-nE-Zof"/>
+                                    <constraint firstAttribute="height" constant="158" id="WWA-Kr-nsg"/>
+                                    <constraint firstAttribute="width" constant="162" id="imy-sq-wfp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Oo4-V9-sEe"/>
+                                        <exclude reference="VhT-nE-Zof"/>
+                                        <exclude reference="WWA-Kr-nsg"/>
+                                        <exclude reference="imy-sq-wfp"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="qUQ-9E-Ad7"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="wdo-tD-TaC"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-sQ-eb4">
+                                <rect key="frame" x="20" y="326" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -73,16 +95,50 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="leading" secondItem="dii-Vg-90N" secondAttribute="leading" id="1I9-UQ-zeR"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="148" id="49X-SY-sbT"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="leading" secondItem="XRp-sQ-eb4" secondAttribute="leading" id="6cY-aE-cfm"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8IO-Lz-JKE"/>
+                            <constraint firstItem="klO-Pf-Mw7" firstAttribute="baseline" secondItem="XRp-sQ-eb4" secondAttribute="baseline" id="8ot-xb-atk"/>
                             <constraint firstItem="Tk9-7M-DEK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GUW-Qr-ubm"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="top" secondItem="XRp-sQ-eb4" secondAttribute="bottom" constant="17" id="J4y-Xs-v1O"/>
+                            <constraint firstItem="5Ag-13-cGW" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="LBO-aZ-EON"/>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="top" secondItem="dii-Vg-90N" secondAttribute="bottom" constant="27" id="LTD-OY-g8P"/>
+                            <constraint firstItem="XRp-sQ-eb4" firstAttribute="leading" secondItem="LaV-KV-DTJ" secondAttribute="leading" id="Mms-bo-ODe"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="leading" secondItem="XRp-sQ-eb4" secondAttribute="leading" id="OhS-Yl-QEe"/>
                             <constraint firstAttribute="bottom" secondItem="Tk9-7M-DEK" secondAttribute="bottom" constant="40" id="P4Z-UM-mZY"/>
+                            <constraint firstItem="Tk9-7M-DEK" firstAttribute="top" secondItem="5Ag-13-cGW" secondAttribute="bottom" constant="48" id="Qxw-ge-0PI"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="top" secondItem="XRp-sQ-eb4" secondAttribute="bottom" constant="8" symbolic="YES" id="Ufj-De-9Gj"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="trailing" secondItem="klO-Pf-Mw7" secondAttribute="trailing" id="WXN-md-VbY"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dYF-2W-FQ1"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ekn-Vq-l9F"/>
+                            <constraint firstItem="klO-Pf-Mw7" firstAttribute="trailing" secondItem="LaV-KV-DTJ" secondAttribute="trailing" id="elD-tL-gt2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sCs-AH-EXZ" secondAttribute="bottom" constant="95" id="f7u-Ly-Ua3"/>
+                            <constraint firstItem="XRp-sQ-eb4" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="15" id="g1S-u6-pTc"/>
+                            <constraint firstItem="5Ag-13-cGW" firstAttribute="leading" secondItem="sCs-AH-EXZ" secondAttribute="trailing" constant="67" id="gEL-rJ-IX2"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="trailing" secondItem="LaV-KV-DTJ" secondAttribute="trailing" id="l4y-8y-Mw1"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-189" id="nRn-GK-Cw2"/>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="nxZ-oD-Bjx"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="trailing" secondItem="XRp-sQ-eb4" secondAttribute="trailing" constant="28" id="pym-Eq-wOd"/>
+                            <constraint firstItem="5Ag-13-cGW" firstAttribute="leading" secondItem="sCs-AH-EXZ" secondAttribute="trailing" constant="67" id="sDI-NC-NtM"/>
+                            <constraint firstItem="sCs-AH-EXZ" firstAttribute="top" secondItem="XRp-sQ-eb4" secondAttribute="bottom" constant="15" id="utf-dO-EE8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="49X-SY-sbT"/>
+                                <exclude reference="OhS-Yl-QEe"/>
+                                <exclude reference="Ufj-De-9Gj"/>
+                                <exclude reference="ekn-Vq-l9F"/>
+                                <exclude reference="nRn-GK-Cw2"/>
+                                <exclude reference="pym-Eq-wOd"/>
+                                <exclude reference="utf-dO-EE8"/>
+                                <exclude reference="gEL-rJ-IX2"/>
+                                <exclude reference="sDI-NC-NtM"/>
+                                <exclude reference="f7u-Ly-Ua3"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="sourceLanguage" destination="sCs-AH-EXZ" id="2TI-Ib-bUs"/>
                         <outlet property="textToTranslate" destination="dii-Vg-90N" id="ypA-lx-0kp"/>
                         <outlet property="translatedText" destination="LaV-KV-DTJ" id="NmE-rq-cQd"/>
                     </connections>
